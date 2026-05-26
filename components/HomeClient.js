@@ -19,7 +19,28 @@ function initials(name) {
   return name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase()
 }
 
-const AVATAR_COLORS = ['#00AEEF', '#005F8A', '#0080C0', '#003F6B', '#0099CC']
+const AVATAR_COLORS = ['#29ABE2', '#0093C4', '#007AAD', '#005F8A', '#0080C0']
+
+// Logo SVG oficial Capilla País — cruz geométrica amarilla sobre azul
+function CapillaLogo({ size = 48 }) {
+  return (
+    <svg viewBox="0 0 100 100" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" rx="12" fill="#29ABE2"/>
+      {/* Brazo horizontal superior */}
+      <rect x="18" y="22" width="64" height="18" fill="#FFE600"/>
+      {/* Brazo vertical superior */}
+      <rect x="38" y="10" width="18" height="30" fill="#FFE600"/>
+      {/* Cuerpo vertical inferior — con hueco interno (estilo del logo) */}
+      <rect x="38" y="42" width="18" height="48" fill="#FFE600"/>
+      {/* Hueco interior izquierdo */}
+      <rect x="30" y="50" width="8" height="32" fill="#29ABE2"/>
+      {/* Hueco interior inferior */}
+      <rect x="30" y="74" width="26" height="8" fill="#29ABE2"/>
+      {/* Escalón del logo */}
+      <rect x="38" y="50" width="6" height="6" fill="#29ABE2"/>
+    </svg>
+  )
+}
 
 export default function HomeClient({ piezas, donantes, totalRecaudado, porcentaje, meta }) {
   const router = useRouter()
@@ -69,13 +90,7 @@ export default function HomeClient({ piezas, donantes, totalRecaudado, porcentaj
       {/* NAV */}
       <nav className={styles.nav}>
         <div className={styles.logoWrap}>
-          <div className={styles.logoIcon}>
-            <svg viewBox="0 0 40 40" width="32" height="32">
-              <rect x="17" y="3" width="6" height="34" fill="#FFE600"/>
-              <rect x="8" y="11" width="24" height="6" fill="#FFE600"/>
-              <rect x="20" y="18" width="12" height="16" fill="#FFE600" opacity="0.6"/>
-            </svg>
-          </div>
+          <CapillaLogo size={48} />
           <div>
             <div className={styles.logoName}>Capilla País</div>
             <div className={styles.logoSub}>Campaña 2026</div>
@@ -108,22 +123,35 @@ export default function HomeClient({ piezas, donantes, totalRecaudado, porcentaj
             </button>
           </div>
         </div>
+
         <div className={styles.heroRight}>
           <div className={styles.chapelPreview}>
-            <svg viewBox="0 0 240 190" width="220">
-              <rect x="30" y="95" width="180" height="78" rx="2" fill="#d0e8f0" stroke="#9ccde0" strokeWidth="1"/>
-              <polygon points="120,18 18,95 222,95" fill="#b8d8ec" stroke="#8cb8d8" strokeWidth="1"/>
-              <rect x="98" y="118" width="44" height="55" rx="1" fill="#8090a8"/>
-              <rect x="42" y="108" width="28" height="28" rx="1" fill="#9dd4ec" stroke="#7ab8d8" strokeWidth="0.8"/>
-              <line x1="56" y1="108" x2="56" y2="136" stroke="#7ab8d8" strokeWidth="0.7"/>
-              <line x1="42" y1="122" x2="70" y2="122" stroke="#7ab8d8" strokeWidth="0.7"/>
-              <rect x="170" y="108" width="28" height="28" rx="1" fill="#9dd4ec" stroke="#7ab8d8" strokeWidth="0.8"/>
-              <line x1="184" y1="108" x2="184" y2="136" stroke="#7ab8d8" strokeWidth="0.7"/>
-              <line x1="170" y1="122" x2="198" y2="122" stroke="#7ab8d8" strokeWidth="0.7"/>
-              <rect x="113" y="8" width="14" height="22" rx="1" fill="#FFE600"/>
-              <rect x="107" y="14" width="26" height="6" rx="1" fill="#FFE600"/>
-              {donantes.slice(0, 3).map((_, i) => (
-                <rect key={i} x={30 + i * 28} y="158" width="20" height="12" rx="1" fill="#00AEEF" opacity="0.85"/>
+            <svg viewBox="0 0 260 200" width="240" xmlns="http://www.w3.org/2000/svg">
+              {/* Base */}
+              <rect x="25" y="100" width="210" height="85" rx="3" fill="#c8dff0" stroke="#a0c4e0" strokeWidth="1.5"/>
+              {/* Techo */}
+              <polygon points="130,15 15,100 245,100" fill="#b0cfe8" stroke="#90b8d8" strokeWidth="1.5"/>
+              {/* Puerta */}
+              <rect x="105" y="125" width="50" height="60" rx="2" fill="#7a8fa8"/>
+              <rect x="105" y="125" width="50" height="28" rx="2 2 0 0" fill="#8fa5bf"/>
+              {/* Ventana izq */}
+              <rect x="38" y="115" width="32" height="32" rx="2" fill="#aad4f0" stroke="#80b8e0" strokeWidth="1"/>
+              <line x1="54" y1="115" x2="54" y2="147" stroke="#80b8e0" strokeWidth="0.8"/>
+              <line x1="38" y1="131" x2="70" y2="131" stroke="#80b8e0" strokeWidth="0.8"/>
+              {/* Ventana der */}
+              <rect x="190" y="115" width="32" height="32" rx="2" fill="#aad4f0" stroke="#80b8e0" strokeWidth="1"/>
+              <line x1="206" y1="115" x2="206" y2="147" stroke="#80b8e0" strokeWidth="0.8"/>
+              <line x1="190" y1="131" x2="222" y2="131" stroke="#80b8e0" strokeWidth="0.8"/>
+              {/* Cruz amarilla en el techo */}
+              <rect x="122" y="5" width="16" height="40" fill="#FFE600"/>
+              <rect x="110" y="16" width="40" height="14" fill="#FFE600"/>
+              {/* Piezas donadas azul */}
+              {donantes.slice(0, 4).map((_, i) => (
+                <rect key={i} x={25 + i * 28} y="175" width="20" height="10" rx="2" fill="#29ABE2" opacity="0.9"/>
+              ))}
+              {/* Piezas disponibles */}
+              {[0,1,2].map(i => (
+                <rect key={i} x={140 + i * 28} y="175" width="20" height="10" rx="2" fill="none" stroke="#90c8e8" strokeWidth="1" strokeDasharray="3,2"/>
               ))}
             </svg>
             <span className={styles.chapelHint}>Modelo de la capilla</span>
@@ -214,7 +242,7 @@ export default function HomeClient({ piezas, donantes, totalRecaudado, porcentaj
         <div className={styles.donorsList}>
           {donantes.length === 0 && (
             <div className={styles.donorRow}>
-              <div className={styles.donorAvatar} style={{ background: '#00AEEF' }}>TU</div>
+              <div className={styles.donorAvatar} style={{ background: '#29ABE2' }}>TU</div>
               <div className={styles.donorInfo}>
                 <div className={styles.donorName}>Tu nombre <span>· Primer constructor</span></div>
                 <div className={styles.donorPiece}><strong>Sé el primero</strong> en poner tu ladrillo</div>
@@ -242,7 +270,7 @@ export default function HomeClient({ piezas, donantes, totalRecaudado, porcentaj
       <div className={styles.donateForm} id="donar-form">
         {success ? (
           <div className={styles.successMsg}>
-            <div style={{ fontSize: 48 }}>🙏</div>
+            <div style={{ fontSize: 52 }}>🙏</div>
             <h2>¡Gracias por poner tu ladrillo!</h2>
             <p>Tu nombre ya está en el libro de constructores.</p>
             <button className={styles.btnPrimary} onClick={() => { setSuccess(false); setNombre(''); setMonto(''); setMensaje(''); setSelectedPieza(null) }}>
@@ -306,7 +334,9 @@ export default function HomeClient({ piezas, donantes, totalRecaudado, porcentaj
 
       {/* ENTERPRISE */}
       <div className={styles.enterprise}>
-        <div className={styles.enterpriseIcon}>🏢</div>
+        <div className={styles.enterpriseIconWrap}>
+          <CapillaLogo size={52} />
+        </div>
         <div>
           <div className={styles.enterpriseTitle}>¿Tu empresa quiere ser parte?</div>
           <p className={styles.enterpriseSub}>Las empresas que aporten verán su logo en el modelo 3D de la capilla, sobre la pieza apadrinada.</p>
@@ -315,6 +345,7 @@ export default function HomeClient({ piezas, donantes, totalRecaudado, porcentaj
       </div>
 
       <footer className={styles.footer}>
+        <CapillaLogo size={32} />
         <p>Capilla País 2026 · Hecho con ❤️ para la comunidad</p>
       </footer>
 
