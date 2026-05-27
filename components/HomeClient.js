@@ -22,7 +22,7 @@ function initials(name) {
 const AVATAR_COLORS = ['#29ABE2', '#0093C4', '#007AAD', '#005F8A', '#0080C0']
 
 // Logo SVG oficial Capilla País — cruz geométrica amarilla sobre azul
-function CapillaLogo({ size = 48 }) {
+function CapillaLogo({ size = 64 }) {
   return (
     <img 
       src="/images.png" 
