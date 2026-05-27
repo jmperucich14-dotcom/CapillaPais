@@ -24,21 +24,13 @@ const AVATAR_COLORS = ['#29ABE2', '#0093C4', '#007AAD', '#005F8A', '#0080C0']
 // Logo SVG oficial Capilla País — cruz geométrica amarilla sobre azul
 function CapillaLogo({ size = 48 }) {
   return (
-    <svg viewBox="0 0 100 100" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="100" rx="12" fill="#29ABE2"/>
-      {/* Brazo horizontal superior */}
-      <rect x="18" y="22" width="64" height="18" fill="#FFE600"/>
-      {/* Brazo vertical superior */}
-      <rect x="38" y="10" width="18" height="30" fill="#FFE600"/>
-      {/* Cuerpo vertical inferior — con hueco interno (estilo del logo) */}
-      <rect x="38" y="42" width="18" height="48" fill="#FFE600"/>
-      {/* Hueco interior izquierdo */}
-      <rect x="30" y="50" width="8" height="32" fill="#29ABE2"/>
-      {/* Hueco interior inferior */}
-      <rect x="30" y="74" width="26" height="8" fill="#29ABE2"/>
-      {/* Escalón del logo */}
-      <rect x="38" y="50" width="6" height="6" fill="#29ABE2"/>
-    </svg>
+    <img 
+      src="/images.png" 
+      alt="Capilla País" 
+      width={size} 
+      height={size} 
+      style={{ borderRadius: '50%', objectFit: 'cover' }}
+    />
   )
 }
 
